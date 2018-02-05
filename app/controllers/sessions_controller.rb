@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
      user_resp = Faraday.get "https://api.github.com/user", {}, {'Authorization' => "token #{session[:token]}", 'Accept' => 'application/json'}
      user_value = JSON.parse(user_resp.body)
      session[:username] = user_value["login"]
- 
+
      redirect_to '/'
   end
 end
